@@ -1,0 +1,30 @@
+name: 'WordPress-Site-Deploy'
+author: 'Rahul Aryan <rah12@live.com>'
+description: 'Deploy WordPress site to a SFTP server using git-ftp.'
+inputs:
+  url:
+    description: 'Host url i.e. protocol://host.domain.tld:port/path'
+    required: true
+  username:
+    description: 'SFTP username'
+    required: true
+  password:
+    description: 'SFTP password'
+    required: false
+  remote_root:
+    description: 'Specifies the remote root directory to deploy to. The remote path in the URL is ignored.'
+    required: false
+  syncroot:
+    description: 'Local directory from where to upload.'
+    required: false
+    default: '.'
+  options:
+    description: 'Additional options'
+    required: false
+    default: '--auto-init --insecure -vv'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  color: 'blue'
+  icon: 'upload-cloud'
